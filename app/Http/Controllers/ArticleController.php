@@ -18,8 +18,20 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
+    public function show($id)
+    {
+        $article = Article::find($id);
+
+        return view('articles.show',compact('article'));
+    }
+
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'desc' => 'required|min:3',
+        ]);
+
         $article = new Article;
         $article->title = $request->title;
         $article->description = $request->desc;
