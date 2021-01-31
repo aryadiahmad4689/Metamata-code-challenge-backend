@@ -17,7 +17,7 @@ class ArticleTest extends TestCase
      *
      * @return void
      */
-    public function test_index()
+    public function test_store_data()
     {
         $user = User::factory()->create();
         $article = Article::factory()->create();
@@ -34,5 +34,30 @@ class ArticleTest extends TestCase
 
         $response->assertStatus(302);
         $response->assertRedirect('/articles-create');
+    }
+
+    public function test_show()
+    {
+        $user = User::factory()->create();
+        $article = Article::factory()->create();
+
+        $response = $this->actingAs($user)
+        ->get('/articles/$article->id');
+
+        $response->assertSee($article->title);
+        $response->assertSee($article->desc);
+
+    }
+
+    public function test_index()
+    {
+        $user = User::factory()->create();
+        $article = Article::factory()->create();
+
+        $response = $this->actingAs($user)
+        ->get('/articles');
+
+        $response->assertSee($article->title);
+        $response->assertSee($article->desc);
     }
 }
