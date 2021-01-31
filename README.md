@@ -19,3 +19,4 @@ Membuat media untuk berbagi cerita; website sederhana untuk membaca dan memposti
 - Tambahkan cara instalasi/run di README.md. Jika website di deploy maka tambahkan link pada README.md
 - WhatsApp ke [Qorthony](https://wa.me/08872402827) jika sudah selesai atau ada yang ingin ditanyakan
 - Batas Pengumpulan sebelum waktu interview 
+

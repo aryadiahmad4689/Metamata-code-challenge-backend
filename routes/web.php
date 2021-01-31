@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+Route::get('/articles',[ArticleController::class,'index']);
+Route::get('/articles/{id}',[ArticleController::class,'show']);
+Route::get('/articles-create',[ArticleController::class,'create']);
+Route::post('/articles-store',[ArticleController::class,'store']);
+});
