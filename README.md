@@ -2,21 +2,18 @@
 
 Membuat media untuk berbagi cerita; website sederhana untuk membaca dan memposting cerita;
 
-## Spesifikasi
-- User harus login terlebih dahulu untuk masuk ke website
-- User yang sudah login bisa memposting cerita
-- User yang sudah login bisa membaca cerita milik sendiri ataupun dari user lainnya
-- User yang sudah login bisa meng-klik tombol suka
+## Instalasi
+- ketik composer install
 
-## Kebutuhan Sistem
-- PHP dengan Framework Laravel 8
-- MySQL Database
-- Git Version Control
-- Composer
+## cara menjalankan
+- jalankan xampp/web server
+- buat .env
+- ketik php artisan migrate
+- ketik php artisan serve
+- kunjungi localhost:8000/articles
 
-## Pengumpulan
-- Fork Repository ini untuk mulai mengerjakan
-- Tambahkan cara instalasi/run di README.md. Jika website di deploy maka tambahkan link pada README.md
-- WhatsApp ke [Qorthony](https://wa.me/08872402827) jika sudah selesai atau ada yang ingin ditanyakan
-- Batas Pengumpulan sebelum waktu interview 
+## test
+- ketik vendor/bin/phpunit --filter ArticleTest
+
+
 

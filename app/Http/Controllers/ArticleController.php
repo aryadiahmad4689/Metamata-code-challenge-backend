@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -20,15 +21,26 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $article = Article::find($id);
 
-        return view('articles.show',compact('article'));
+        $article = Article::with('like')->find($id);
+        // $jumlahLike = $article->like['user_id'];
+
+    //    $jumlahLike = 0;
+    //    foreach ($article->like as $key => $like){
+    //     $jumlahLike = $key++;
+    //    }
+        // dd($article);
+
+        $jumlahLike = Like::count();
+        $likes = Like::all();
+
+        return view('articles.show',compact('article','jumlahLike','likes'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|max:255',
             'desc' => 'required|min:3',
         ]);
 

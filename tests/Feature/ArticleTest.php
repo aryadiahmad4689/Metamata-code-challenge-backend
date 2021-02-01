@@ -12,15 +12,11 @@ class ArticleTest extends TestCase
 {
     use DatabaseTransactions;
     use WithFaker;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function test_store_data()
     {
         $user = User::factory()->create();
-        $article = Article::factory()->create();
+        Article::factory()->create();
         $response = $this->actingAs($user)
             /*
              * Fungsi from digunakan untuk membuat simulasi seolah-olah
