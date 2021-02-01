@@ -22,19 +22,11 @@ class ArticleController extends Controller
     public function show($id)
     {
 
-        $article = Article::with('like')->find($id);
-        // $jumlahLike = $article->like['user_id'];
+        $article = Article::with('like')->find($id);;
 
-    //    $jumlahLike = 0;
-    //    foreach ($article->like as $key => $like){
-    //     $jumlahLike = $key++;
-    //    }
-        // dd($article);
-
-        $jumlahLike = Like::count();
         $likes = Like::all();
 
-        return view('articles.show',compact('article','jumlahLike','likes'));
+        return view('articles.show',compact('article','likes'));
     }
 
     public function store(Request $request)
